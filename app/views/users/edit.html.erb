@@ -1,0 +1,19 @@
+<h1>Edit User</h1>
+
+<% if @user.errors.any? %>
+  <p>There are <%= pluralize@user.errors.count, "error" %>:</p>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @user do |f| %>
+  <%= f.label :email, "Your Email:" %>
+  <%= f.text_field :email, placeholder: "example@example.com" %><br>
+  <%= f.label :username, "Your Username Here:" %>
+  <%= f.text_field :username, placeholder: "ExampleUsername" %><br>
+  <%= f.label :password, "Your Secure Password:" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>
